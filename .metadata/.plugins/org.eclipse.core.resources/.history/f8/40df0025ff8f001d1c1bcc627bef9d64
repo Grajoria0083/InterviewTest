@@ -1,0 +1,46 @@
+package com.masai;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class ResultDto {
+
+	@JsonProperty("Api")
+	private String api;
+	
+	@JsonProperty("Description")
+	private String description;
+	
+	public ResultDto() {
+		
+	}
+
+	public ResultDto(String api, String description) {
+		super();
+		this.api = api;
+		this.description = description;
+	}
+
+	public String getApi() {
+		return api;
+	}
+
+	public void setApi(String api) {
+		this.api = api;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "ResultDto [api=" + api + ", description=" + description + "]";
+	}
+
+	
+	
+}

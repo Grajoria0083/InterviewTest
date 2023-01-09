@@ -1,0 +1,28 @@
+package com.masai;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class Entry {
+
+	@JsonProperty("")
+	private String title;
+	
+	@JsonProperty("Description")
+	private String description;
+	
+	@JsonProperty("Auth")
+	private String auth;
+	
+	@JsonProperty("Https")
+	private String https;
+	
+	@JsonProperty("Category")
+	private String category;
+	
+//	@JsonProperty("")
+//	private String category;
+	
+	@JsonProperty("Cors")
+	private String cors;
+	
+}

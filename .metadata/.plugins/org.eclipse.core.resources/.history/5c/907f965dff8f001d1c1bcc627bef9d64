@@ -1,0 +1,39 @@
+package com.masai;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.crypto.Data;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import jakarta.websocket.server.PathParam;
+
+@RestController
+public class MyController {
+
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@GetMapping("/entries/{category}")
+	public List<ResultDto> getEntriesHandler(@PathParam("category") String category){
+		
+		AllData data = restTemplate.getForObject("https://api.publicapis.org/entries", AllData.class);
+		
+		List<Entry> list = data.getEntries();
+		
+		List<ResultDto> resultDtos = new ArrayList<>();
+		
+		for (Entry l : list) {
+			if (l.getCategory().equals(category)) {
+				resultDtos.add(new ResultDto(l.getApi(),l.getDescription()));
+			}
+		}
+		
+		return resultDtos;
+	}
+	
+}
